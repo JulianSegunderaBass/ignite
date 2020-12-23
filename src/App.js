@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+// Importing Pages
+import Home from './pages/Home';
+
 
 function App() {
     return (
         <div className="App">
-        
+            <h1>Hello Ignite</h1>
+            <Home />
         </div>
     );
 }
