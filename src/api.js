@@ -45,3 +45,11 @@ const new_games = `games?dates=${lastYear},${currentDate}&ordering=-released&pag
 export const popularGamesURL = () => `${base_url}${popular_games}`;
 export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
 export const newGamesURL = () => `${base_url}${new_games}`;
+
+// Game Details - game id is needed per game for added details
+export const gameDetailsURL = (game_id) => `${base_url}games/${game_id}`;
+
+// Game screenshots
+// In this case, the screenshots are not part of the original API request,
+// so we do it separately here
+export const gameScreenshotURL = (game_id) => `${base_url}games/${game_id}/screenshots`;
