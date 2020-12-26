@@ -3,7 +3,8 @@
 // The initial state for the reducer
 const initialState = {
     game: {},
-    screen: {}
+    screen: {},
+    isLoading: true,
 }
 
 const detailReducer = (state=initialState, action) => {
@@ -14,7 +15,14 @@ const detailReducer = (state=initialState, action) => {
             // Second parameter updates the specific details state
             return {...state,
                 game: action.payload.game,
-                screen: action.payload.screen
+                screen: action.payload.screen,
+                // When we fetch the data, set loading to false
+                isLoading: false
+            }
+        case "LOADING_DETAIL":
+            return {
+                ...state,
+                isLoading: true
             }
         default:
             return {...state}

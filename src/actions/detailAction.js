@@ -5,6 +5,12 @@ import axios from 'axios';
 import { gameDetailsURL, gameScreenshotURL } from '../api';
 
 export const loadDetail = (id) => async (dispatch) => {
+
+    // Setting "isLoading" to true before fetching the data
+    dispatch({
+        type: "LOADING_DETAIL"
+    });
+
     // In the API, gameDetailsURL and gameScreenshotURL 
     // expect an ID parameter
     const detailData = await axios.get(gameDetailsURL(id));

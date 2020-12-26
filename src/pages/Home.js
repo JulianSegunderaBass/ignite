@@ -7,7 +7,7 @@ import Game from '../components/Game';
 import GameDetail from '../components/GameDetail';
 // Importing Styling
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 // Route Imports
 import { useLocation } from 'react-router-dom';
 
@@ -31,50 +31,58 @@ const Home = () => {
 
     return (
         <GameList>
-            {/* Render GameDetail component when a pathID is available */}
-            {pathID && <GameDetail />}
-            <h2>Upcoming Games</h2>
-            <Games>
-                {/* Mapping through each game in upcoming games array,
-                and passing down game properties as props */}
-                {upcoming.map(game => (
-                    <Game 
-                        name={game.name} 
-                        released={game.released} 
-                        id={game.id}
-                        key={game.id}
-                        image={game.background_image}
-                    />
-                ))}
-            </Games>
-            <h2>Popular Games</h2>
-            <Games>
-                {/* Mapping through each game in upcoming games array,
-                and passing down game properties as props */}
-                {popular.map(game => (
-                    <Game 
-                        name={game.name} 
-                        released={game.released} 
-                        id={game.id}
-                        key={game.id}
-                        image={game.background_image}
-                    />
-                ))}
-            </Games>
-            <h2>New Games</h2>
-            <Games>
-                {/* Mapping through each game in upcoming games array,
-                and passing down game properties as props */}
-                {newGames.map(game => (
-                    <Game 
-                        name={game.name} 
-                        released={game.released} 
-                        id={game.id}
-                        key={game.id}
-                        image={game.background_image}
-                    />
-                ))}
-            </Games>
+            <AnimateSharedLayout>
+                {/* Render GameDetail component when a pathID is available */}
+                <AnimatePresence>
+                    {/* This case of AnimatePresence requires
+                    that the component have a toggle (pathID) / component
+                    toggles on and off */}
+                    {/* Path ID being passed as ID for animation */}
+                    {pathID && <GameDetail pathID={pathID} />}
+                </AnimatePresence>
+                <h2>Upcoming Games</h2>
+                <Games>
+                    {/* Mapping through each game in upcoming games array,
+                    and passing down game properties as props */}
+                    {upcoming.map(game => (
+                        <Game 
+                            name={game.name} 
+                            released={game.released} 
+                            id={game.id}
+                            key={game.id}
+                            image={game.background_image}
+                        />
+                    ))}
+                </Games>
+                <h2>Popular Games</h2>
+                <Games>
+                    {/* Mapping through each game in upcoming games array,
+                    and passing down game properties as props */}
+                    {popular.map(game => (
+                        <Game 
+                            name={game.name} 
+                            released={game.released} 
+                            id={game.id}
+                            key={game.id}
+                            image={game.background_image}
+                        />
+                    ))}
+                </Games>
+                <h2>New Games</h2>
+                <Games>
+                    {/* Mapping through each game in upcoming games array,
+                    and passing down game properties as props */}
+                    {newGames.map(game => (
+                        <Game 
+                            name={game.name} 
+                            released={game.released} 
+                            id={game.id}
+                            key={game.id}
+                            image={game.background_image}
+                        />
+                    ))}
+                </Games>
+            </AnimateSharedLayout>
         </GameList>
     )
 }

@@ -37,9 +37,9 @@ const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 // Popular Games - retrieving games from last year to current date
 // Upcoming Games - retrieving games coming out next year
 // New Games - retrieving games coming out now
-const popular_games = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=15`;
-const upcoming_games = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=15`;
-const new_games = `games?dates=${lastYear},${currentDate}&ordering=-released&page_size=15`;
+const popular_games = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=6`;
+const upcoming_games = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=6`;
+const new_games = `games?dates=${lastYear},${currentDate}&ordering=-released&page_size=6`;
 
 // The final URL for the games
 export const popularGamesURL = () => `${base_url}${popular_games}`;
