@@ -26,7 +26,7 @@ const Home = () => {
 
     // Getting data from the state
     // Destructuring to get specific sections
-    const { popular, newGames, upcoming } = useSelector(state => state.games);
+    const { popular, newGames, upcoming, searched } = useSelector(state => state.games);
     
 
     return (
@@ -40,6 +40,27 @@ const Home = () => {
                     {/* Path ID being passed as ID for animation */}
                     {pathID && <GameDetail pathID={pathID} />}
                 </AnimatePresence>
+                {/* Loading in searched games.
+                If nothing is searched a.k.a the searched array
+                state is empty (0), return nothing */}
+                {searched.length ? (
+                    <div className="searched">
+                        <h2>Searched Games</h2>
+                        <Games>
+                            {/* Mapping through each game in upcoming games array,
+                            and passing down game properties as props */}
+                            {searched.map(game => (
+                                <Game 
+                                    name={game.name} 
+                                    released={game.released} 
+                                    id={game.id}
+                                    key={game.id}
+                                    image={game.background_image}
+                                />
+                            ))}
+                        </Games>
+                    </div>
+                ) : ''}
                 <h2>Upcoming Games</h2>
                 <Games>
                     {/* Mapping through each game in upcoming games array,

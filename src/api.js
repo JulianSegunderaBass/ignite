@@ -53,3 +53,6 @@ export const gameDetailsURL = (game_id) => `${base_url}games/${game_id}`;
 // In this case, the screenshots are not part of the original API request,
 // so we do it separately here
 export const gameScreenshotURL = (game_id) => `${base_url}games/${game_id}/screenshots`;
+
+// Searched Game
+export const searchGameURL = (game_name) => `${base_url}games?search=${game_name}&page_size=9`;
