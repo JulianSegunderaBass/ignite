@@ -5,9 +5,10 @@ import { loadGames } from '../actions/gamesAction';
 // Importing Components
 import Game from '../components/Game';
 import GameDetail from '../components/GameDetail';
-// Importing Styling
+// Importing Styling and Animations
 import styled from 'styled-components';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
+import { fadeIn } from '../animations';
 // Route Imports
 import { useLocation } from 'react-router-dom';
 
@@ -30,7 +31,7 @@ const Home = () => {
     
 
     return (
-        <GameList>
+        <GameList variants={fadeIn} initial="hidden" animate="show">
             <AnimateSharedLayout>
                 {/* Render GameDetail component when a pathID is available */}
                 <AnimatePresence>

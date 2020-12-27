@@ -1,9 +1,10 @@
 // The card component for each game
 
 import React from 'react';
-// Importing Styling
+// Importing Styling and Animations
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { popUp } from '../animations';
 // Redux
 import { useDispatch } from 'react-redux';
 import { loadDetail } from '../actions/detailAction';
@@ -30,7 +31,7 @@ const Game = ({name, released, image, id}) => {
 
     return (
         // LayoutID needed for animations
-        <StyledGame layoutId={stringPathID} onClick={loadDetailHandler}>
+        <StyledGame variants={popUp} initial="hidden" animate="show" layoutId={stringPathID} onClick={loadDetailHandler}>
             <Link to={`/game/${id}`}>
                 <h3>{name}</h3>
                 <p>{released}</p>
